@@ -493,19 +493,68 @@
     // =====================
     // Photo Management
     // =====================
-    const photos = [
-      'photos/photo1.jpg',
-      'photos/photo2.jpg',
-      'photos/photo3.jpg',
-      'photos/photo4.jpg',
-      'photos/photo5.jpg'
-    ];
+    let photos = [];
+    let photosReady = false;
 
-    function getNextPhotoIndex() {
-      let lastIndex = parseInt(localStorage.getItem('valentinePhotoIndex') || '-1', 10);
-      let nextIndex = (lastIndex + 1) % photos.length;
-      localStorage.setItem('valentinePhotoIndex', nextIndex);
-      return nextIndex;
+    // Probe for photos: try photo1.jpg, photo1.jpeg, photo2.jpg, photo2.jpeg, etc.
+    // Stops when a number has neither .jpg nor .jpeg
+    function discoverPhotos() {
+      return new Promise((resolve) => {
+        const found = [];
+        let index = 1;
+
+        function probeNext() {
+          const jpgPath = 'photos/photo' + index + '.jpg';
+          const jpegPath = 'photos/photo' + index + '.jpeg';
+
+          const imgJpg = new Image();
+          const imgJpeg = new Image();
+          let settled = false;
+
+          function onFound(path) {
+            if (settled) return;
+            settled = true;
+            found.push(path);
+            index++;
+            probeNext();
+          }
+
+          function onBothFailed() {
+            // Neither extension worked for this index — we're done
+            resolve(found);
+          }
+
+          let jpgDone = false;
+          let jpegDone = false;
+
+          imgJpg.onload = () => onFound(jpgPath);
+          imgJpg.onerror = () => {
+            jpgDone = true;
+            if (jpegDone) onBothFailed();
+          };
+
+          imgJpeg.onload = () => onFound(jpegPath);
+          imgJpeg.onerror = () => {
+            jpegDone = true;
+            if (jpgDone) onBothFailed();
+          };
+
+          imgJpg.src = jpgPath;
+          imgJpeg.src = jpegPath;
+        }
+
+        probeNext();
+      });
+    }
+
+    function getRandomPhoto() {
+      if (photos.length === 0) return '';
+      const lastShown = localStorage.getItem('valentineLastPhoto') || '';
+      let available = photos.filter(p => p !== lastShown);
+      if (available.length === 0) available = photos;
+      const pick = available[Math.floor(Math.random() * available.length)];
+      localStorage.setItem('valentineLastPhoto', pick);
+      return pick;
     }
 
     // =====================
@@ -706,9 +755,14 @@
       document.getElementById('question-screen').style.display = 'none';
       document.getElementById('celebration-screen').classList.add('active');
 
-      // Set photo
-      const photoIndex = getNextPhotoIndex();
-      document.getElementById('valentine-photo').src = photos[photoIndex];
+      // Set random photo
+      const photo = getRandomPhoto();
+      if (photo) {
+        document.getElementById('valentine-photo').src = photo;
+        document.getElementById('photo-container').style.display = '';
+      } else {
+        document.getElementById('photo-container').style.display = 'none';
+      }
 
       // Launch confetti
       createConfetti();
@@ -747,6 +801,10 @@
     // Initialize
     // =====================
     createFloatingHearts();
+    discoverPhotos().then(found => {
+      photos = found;
+      photosReady = true;
+    });
   </script>
 </body>
 </html>
