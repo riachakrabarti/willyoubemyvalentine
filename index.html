@@ -64,7 +64,6 @@
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Envelope body */
     .envelope-body {
       position: absolute;
       bottom: 0;
@@ -81,14 +80,12 @@
       content: '';
       position: absolute;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       background:
         linear-gradient(135deg, transparent 48%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0.1) 51%, transparent 52%),
         linear-gradient(-135deg, transparent 48%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0.1) 51%, transparent 52%);
     }
 
-    /* Inner flap pattern (visible when open) */
     .envelope-inner {
       position: absolute;
       bottom: 0;
@@ -99,14 +96,12 @@
     }
 
     .envelope-inner-pattern {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       background:
         repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(180,60,60,0.08) 8px, rgba(180,60,60,0.08) 9px),
         repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(180,60,60,0.08) 8px, rgba(180,60,60,0.08) 9px);
     }
 
-    /* Flap */
     .envelope-flap {
       position: absolute;
       top: 0;
@@ -118,8 +113,7 @@
     }
 
     .envelope-flap-shape {
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       border-left: 190px solid transparent;
       border-right: 190px solid transparent;
       border-top: 140px solid #d4c8b8;
@@ -130,7 +124,6 @@
       transform: rotateX(180deg);
     }
 
-    /* Letter peeking out */
     .letter {
       position: absolute;
       bottom: 20px;
@@ -162,23 +155,18 @@
       line-height: 1.6;
     }
 
-    /* Wax seal */
     .wax-seal {
       position: absolute;
       bottom: 85px;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;
-      height: 50px;
+      width: 50px; height: 50px;
       z-index: 4;
       transition: opacity 0.3s ease;
     }
 
-    .envelope-wrapper.opening .wax-seal {
-      opacity: 0;
-    }
+    .envelope-wrapper.opening .wax-seal { opacity: 0; }
 
-    /* Envelope front text */
     .envelope-front-text {
       position: absolute;
       bottom: 60px;
@@ -193,11 +181,8 @@
       transition: opacity 0.3s ease;
     }
 
-    .envelope-wrapper.opening .envelope-front-text {
-      opacity: 0;
-    }
+    .envelope-wrapper.opening .envelope-front-text { opacity: 0; }
 
-    /* Small animal decorations on envelope */
     .envelope-animal {
       position: absolute;
       z-index: 5;
@@ -205,9 +190,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .envelope-wrapper.opening .envelope-animal {
-      opacity: 0;
-    }
+    .envelope-wrapper.opening .envelope-animal { opacity: 0; }
 
     /* ===== MAIN VALENTINE SCENE ===== */
     #valentine-scene {
@@ -216,11 +199,8 @@
       position: relative;
     }
 
-    #valentine-scene.active {
-      display: block;
-    }
+    #valentine-scene.active { display: block; }
 
-    /* Subtle floating hearts (SVG, not emoji) */
     .floating-hearts {
       position: fixed;
       top: 0; left: 0;
@@ -236,11 +216,6 @@
       opacity: 0;
     }
 
-    .floating-heart svg {
-      width: 100%;
-      height: 100%;
-    }
-
     @keyframes floatUp {
       0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
       10% { opacity: 0.15; }
@@ -248,7 +223,6 @@
       100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
     }
 
-    /* Animal illustrations positioned around edges */
     .animal-illustration {
       position: fixed;
       pointer-events: none;
@@ -257,11 +231,8 @@
       animation: animalFadeIn 0.8s ease forwards;
     }
 
-    @keyframes animalFadeIn {
-      to { opacity: 1; }
-    }
+    @keyframes animalFadeIn { to { opacity: 1; } }
 
-    /* Main content area */
     .main-content {
       position: relative;
       z-index: 10;
@@ -273,10 +244,7 @@
       padding: 40px 20px;
     }
 
-    /* Question screen */
-    #question-screen {
-      text-align: center;
-    }
+    #question-screen { text-align: center; }
 
     .card {
       background: white;
@@ -311,8 +279,7 @@
     }
 
     .card-divider {
-      width: 60px;
-      height: 2px;
+      width: 60px; height: 2px;
       background: linear-gradient(90deg, transparent, #c9a87c, transparent);
       margin: 20px auto;
     }
@@ -324,11 +291,8 @@
       margin-top: 10px;
     }
 
-    .card-animals svg {
-      opacity: 0.4;
-    }
+    .card-animals svg { opacity: 0.4; }
 
-    /* Buttons */
     .buttons-area {
       position: relative;
       width: 400px;
@@ -379,7 +343,56 @@
       user-select: none;
     }
 
-    /* Celebration screen */
+    /* Angry cat overlay */
+    #angry-cat-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 200;
+      background: rgba(250, 246, 240, 0.92);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    #angry-cat-overlay.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .angry-cat-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: #8b4a4a;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .angry-cat-dismiss {
+      margin-top: 20px;
+      padding: 10px 28px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1.5px solid #c9a87c;
+      border-radius: 50px;
+      cursor: pointer;
+      background: transparent;
+      color: #c9a87c;
+      transition: all 0.3s;
+    }
+
+    .angry-cat-dismiss:hover {
+      background: #c9a87c;
+      color: white;
+    }
+
+    /* Celebration */
     .celebration {
       display: none;
       flex-direction: column;
@@ -419,8 +432,7 @@
     }
 
     .photo-container img {
-      width: 340px;
-      height: 420px;
+      width: 340px; height: 420px;
       object-fit: cover;
       border-radius: 16px;
       box-shadow: 0 8px 35px rgba(0,0,0,0.1);
@@ -430,14 +442,12 @@
 
     .photo-frame {
       position: absolute;
-      top: -8px; left: -8px;
-      right: -8px; bottom: -8px;
+      top: -8px; left: -8px; right: -8px; bottom: -8px;
       border: 2px solid rgba(201, 168, 124, 0.4);
       border-radius: 20px;
       z-index: 1;
     }
 
-    /* Orbiting SVG hearts */
     .orbiting-hearts {
       position: absolute;
       top: 50%; left: 50%;
@@ -465,8 +475,7 @@
 
     .photo-glow {
       position: absolute;
-      top: -15px; left: -15px;
-      right: -15px; bottom: -15px;
+      top: -15px; left: -15px; right: -15px; bottom: -15px;
       background: radial-gradient(ellipse, rgba(201, 168, 124, 0.15), transparent 70%);
       border-radius: 25px;
       animation: pulse 3s ease-in-out infinite;
@@ -498,7 +507,6 @@
       color: white;
     }
 
-    /* Confetti canvas */
     #confetti-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -507,7 +515,7 @@
       z-index: 100;
     }
 
-    /* Responsive */
+    /* Mobile */
     @media (max-width: 600px) {
       .envelope-wrapper { width: 320px; height: 230px; }
       .envelope-body { height: 170px; }
@@ -524,14 +532,30 @@
       .card { padding: 35px 30px; }
       .question { font-size: 2rem; }
       .dear-elliot { font-size: 1.3rem; }
-      .buttons-area { width: 300px; }
+      .buttons-area { width: 100%; height: auto; min-height: 100px; }
       .photo-container img { width: 280px; height: 350px; }
       .celebration-text { font-size: 2rem; }
+      .animal-illustration { transform: scale(0.6); transform-origin: top left; }
+      .btn-no { display: none !important; }
       @keyframes orbit {
         0% { transform: rotate(0deg) translateX(170px) rotate(0deg); opacity: 0.6; }
         50% { opacity: 1; }
         100% { transform: rotate(360deg) translateX(170px) rotate(-360deg); opacity: 0.6; }
       }
+    }
+
+    /* Mobile tap hint */
+    .mobile-tap-hint {
+      display: none;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: #b8a898;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+      .mobile-tap-hint { display: block; }
     }
   </style>
 </head>
@@ -540,52 +564,30 @@
   <!-- ===== ENVELOPE SCENE ===== -->
   <div id="envelope-scene" onclick="openEnvelope()">
     <div class="envelope-wrapper" id="envelope">
-      <!-- Flap -->
       <div class="envelope-flap">
         <div class="envelope-flap-shape"></div>
       </div>
-
-      <!-- Inner pattern -->
       <div class="envelope-inner">
         <div class="envelope-inner-pattern"></div>
       </div>
-
-      <!-- Letter inside -->
       <div class="letter">
-        <div class="letter-text">
-          Will you be<br>my Valentine?
-        </div>
+        <div class="letter-text">Will you be<br>my Valentine?</div>
       </div>
-
-      <!-- Envelope body (front) -->
       <div class="envelope-body"></div>
-
-      <!-- Wax seal -->
       <div class="wax-seal">
-        <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 50 50" fill="none">
           <circle cx="25" cy="25" r="22" fill="#8b4a4a"/>
           <circle cx="25" cy="25" r="19" fill="#a05555"/>
-          <!-- Heart in wax seal -->
-          <path d="M25 36 C25 36 14 28 14 21.5 C14 18 17 15.5 20 15.5 C22.5 15.5 24 17 25 18.5 C26 17 27.5 15.5 30 15.5 C33 15.5 36 18 36 21.5 C36 28 25 36 25 36Z" fill="#faf6f0" opacity="0.9"/>
-          <!-- Scalloped edge -->
-          <circle cx="25" cy="3" r="4" fill="#a05555"/>
-          <circle cx="25" cy="47" r="4" fill="#a05555"/>
-          <circle cx="3" cy="25" r="4" fill="#a05555"/>
-          <circle cx="47" cy="25" r="4" fill="#a05555"/>
-          <circle cx="9" cy="9" r="3.5" fill="#a05555"/>
-          <circle cx="41" cy="9" r="3.5" fill="#a05555"/>
-          <circle cx="9" cy="41" r="3.5" fill="#a05555"/>
-          <circle cx="41" cy="41" r="3.5" fill="#a05555"/>
+          <path d="M25 36C25 36 14 28 14 21.5C14 18 17 15.5 20 15.5C22.5 15.5 24 17 25 18.5C26 17 27.5 15.5 30 15.5C33 15.5 36 18 36 21.5C36 28 25 36 25 36Z" fill="#faf6f0" opacity="0.9"/>
+          <circle cx="25" cy="3" r="4" fill="#a05555"/><circle cx="25" cy="47" r="4" fill="#a05555"/>
+          <circle cx="3" cy="25" r="4" fill="#a05555"/><circle cx="47" cy="25" r="4" fill="#a05555"/>
+          <circle cx="9" cy="9" r="3.5" fill="#a05555"/><circle cx="41" cy="9" r="3.5" fill="#a05555"/>
+          <circle cx="9" cy="41" r="3.5" fill="#a05555"/><circle cx="41" cy="41" r="3.5" fill="#a05555"/>
         </svg>
       </div>
-
-      <!-- Front text -->
       <div class="envelope-front-text">Dear Elliot...</div>
-
-      <!-- Tiny animal stamps on envelope -->
       <div class="envelope-animal" style="top: 68px; right: 18px;">
         <svg width="36" height="28" viewBox="0 0 36 28"><g opacity="0.6">
-          <!-- Tiny dachshund stamp -->
           <rect x="0" y="0" width="36" height="28" rx="2" fill="#f5ece0" stroke="#c9a87c" stroke-width="1"/>
           <ellipse cx="18" cy="16" rx="12" ry="5" fill="#c9a87c"/>
           <circle cx="27" cy="12" r="4" fill="#c9a87c"/>
@@ -602,16 +604,10 @@
 
   <!-- ===== VALENTINE SCENE ===== -->
   <div id="valentine-scene">
-
-    <!-- Floating hearts -->
     <div class="floating-hearts" id="floating-hearts"></div>
-
-    <!-- SVG Animal illustrations -->
     <div id="animal-illustrations"></div>
 
-    <!-- Main content -->
     <div class="main-content">
-
       <!-- Question screen -->
       <div id="question-screen">
         <div class="card">
@@ -619,42 +615,11 @@
           <div class="question">Will you be<br>my Valentine?</div>
           <div class="card-divider"></div>
           <div class="card-animals">
-            <!-- Mini seal -->
-            <svg width="32" height="28" viewBox="0 0 32 28" fill="none">
-              <ellipse cx="16" cy="18" rx="12" ry="9" fill="#c9a87c" opacity="0.4"/>
-              <circle cx="16" cy="10" r="7" fill="#c9a87c" opacity="0.4"/>
-              <circle cx="13.5" cy="8.5" r="1" fill="#8b6f5e" opacity="0.5"/>
-              <circle cx="18.5" cy="8.5" r="1" fill="#8b6f5e" opacity="0.5"/>
-              <ellipse cx="16" cy="11" rx="2" ry="1" fill="#8b6f5e" opacity="0.3"/>
-            </svg>
-            <!-- Mini heart -->
-            <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
-              <path d="M10 17 C10 17 1 11 1 5.5 C1 2.5 3.5 0.5 6 0.5 C8 0.5 9.5 1.5 10 3 C10.5 1.5 12 0.5 14 0.5 C16.5 0.5 19 2.5 19 5.5 C19 11 10 17 10 17Z" fill="#c9a87c" opacity="0.3"/>
-            </svg>
-            <!-- Mini dachshund -->
-            <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
-              <ellipse cx="20" cy="13" rx="14" ry="5" fill="#c9a87c" opacity="0.4"/>
-              <circle cx="32" cy="9" r="5" fill="#c9a87c" opacity="0.4"/>
-              <circle cx="34" cy="8" r="1" fill="#8b6f5e" opacity="0.5"/>
-              <ellipse cx="36" cy="10" rx="2" ry="1" fill="#c9a87c" opacity="0.4"/>
-              <rect x="9" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/>
-              <rect x="14" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/>
-              <rect x="26" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/>
-              <rect x="30" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/>
-            </svg>
-            <!-- Mini heart -->
-            <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
-              <path d="M10 17 C10 17 1 11 1 5.5 C1 2.5 3.5 0.5 6 0.5 C8 0.5 9.5 1.5 10 3 C10.5 1.5 12 0.5 14 0.5 C16.5 0.5 19 2.5 19 5.5 C19 11 10 17 10 17Z" fill="#c9a87c" opacity="0.3"/>
-            </svg>
-            <!-- Mini cat -->
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <ellipse cx="14" cy="19" rx="8" ry="7" fill="#c9a87c" opacity="0.4"/>
-              <circle cx="14" cy="11" r="7" fill="#c9a87c" opacity="0.4"/>
-              <polygon points="8,6 7,0 12,4" fill="#c9a87c" opacity="0.4"/>
-              <polygon points="20,6 21,0 16,4" fill="#c9a87c" opacity="0.4"/>
-              <circle cx="11.5" cy="10" r="1" fill="#8b6f5e" opacity="0.5"/>
-              <circle cx="16.5" cy="10" r="1" fill="#8b6f5e" opacity="0.5"/>
-            </svg>
+            <svg width="32" height="28" viewBox="0 0 32 28" fill="none"><ellipse cx="16" cy="18" rx="12" ry="9" fill="#c9a87c" opacity="0.4"/><circle cx="16" cy="10" r="7" fill="#c9a87c" opacity="0.4"/><circle cx="13.5" cy="8.5" r="1" fill="#8b6f5e" opacity="0.5"/><circle cx="18.5" cy="8.5" r="1" fill="#8b6f5e" opacity="0.5"/><ellipse cx="16" cy="11" rx="2" ry="1" fill="#8b6f5e" opacity="0.3"/></svg>
+            <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 17C10 17 1 11 1 5.5C1 2.5 3.5.5 6 .5 8 .5 9.5 1.5 10 3 10.5 1.5 12 .5 14 .5 16.5.5 19 2.5 19 5.5 19 11 10 17 10 17Z" fill="#c9a87c" opacity="0.3"/></svg>
+            <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><ellipse cx="20" cy="13" rx="14" ry="5" fill="#c9a87c" opacity="0.4"/><circle cx="32" cy="9" r="5" fill="#c9a87c" opacity="0.4"/><circle cx="34" cy="8" r="1" fill="#8b6f5e" opacity="0.5"/><rect x="9" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/><rect x="14" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/><rect x="26" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/><rect x="30" y="17" width="2" height="5" rx="1" fill="#c9a87c" opacity="0.4"/></svg>
+            <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 17C10 17 1 11 1 5.5C1 2.5 3.5.5 6 .5 8 .5 9.5 1.5 10 3 10.5 1.5 12 .5 14 .5 16.5.5 19 2.5 19 5.5 19 11 10 17 10 17Z" fill="#c9a87c" opacity="0.3"/></svg>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="19" rx="8" ry="7" fill="#c9a87c" opacity="0.4"/><circle cx="14" cy="11" r="7" fill="#c9a87c" opacity="0.4"/><polygon points="8,6 7,0 12,4" fill="#c9a87c" opacity="0.4"/><polygon points="20,6 21,0 16,4" fill="#c9a87c" opacity="0.4"/><circle cx="11.5" cy="10" r="1" fill="#8b6f5e" opacity="0.5"/><circle cx="16.5" cy="10" r="1" fill="#8b6f5e" opacity="0.5"/></svg>
           </div>
         </div>
 
@@ -662,13 +627,13 @@
           <button class="btn-yes" id="btn-yes" onclick="sayYes()">Yes, always</button>
           <button class="btn-no" id="btn-no">No</button>
         </div>
+        <div class="mobile-tap-hint">tap anywhere to say yes</div>
       </div>
 
       <!-- Celebration screen -->
       <div class="celebration" id="celebration-screen">
         <div class="celebration-text">I knew you would!</div>
         <div class="celebration-subtext">Happy Valentine's Day, my love</div>
-
         <div class="photo-container" id="photo-container">
           <div class="photo-glow"></div>
           <div class="photo-frame"></div>
@@ -682,164 +647,332 @@
             <div class="orbit-heart"><svg width="18" height="16" viewBox="0 0 20 18"><path d="M10 17C10 17 1 11 1 5.5C1 2.5 3.5.5 6 .5 8 .5 9.5 1.5 10 3 10.5 1.5 12 .5 14 .5 16.5.5 19 2.5 19 5.5 19 11 10 17 10 17Z" fill="#8b4a4a" opacity="0.5"/></svg></div>
           </div>
         </div>
-
         <button class="btn-back" onclick="goBack()">ask me again</button>
       </div>
     </div>
   </div>
 
-  <!-- Confetti canvas -->
+  <!-- Angry cat overlay -->
+  <div id="angry-cat-overlay">
+    <div id="angry-cat-svg"></div>
+    <div class="angry-cat-text" id="angry-cat-text"></div>
+    <button class="angry-cat-dismiss" onclick="dismissAngryCat()">okay, okay...</button>
+  </div>
+
   <canvas id="confetti-canvas"></canvas>
 
   <script>
     // =====================
+    // Mobile detection
+    // =====================
+    const isMobile = window.matchMedia('(max-width: 600px)').matches || 'ontouchstart' in window;
+
+    // =====================
     // SVG Animal Definitions
     // =====================
     const animalSVGs = {
-      seal: (w) => `<svg width="${w}" height="${w * 0.85}" viewBox="0 0 120 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- body -->
+      seal: (w) => `<svg width="${w}" height="${w * 0.85}" viewBox="0 0 120 102" fill="none">
         <ellipse cx="60" cy="68" rx="42" ry="28" fill="#b8a898"/>
-        <ellipse cx="60" cy="68" rx="42" ry="28" fill="url(#sealGrad)" opacity="0.3"/>
-        <!-- tail -->
         <ellipse cx="100" cy="75" rx="14" ry="8" fill="#a89888" transform="rotate(-20 100 75)"/>
-        <!-- head -->
         <circle cx="30" cy="48" r="22" fill="#c4b5a5"/>
-        <!-- cheeks -->
         <circle cx="22" cy="54" r="4" fill="#d4a898" opacity="0.4"/>
         <circle cx="38" cy="54" r="4" fill="#d4a898" opacity="0.4"/>
-        <!-- eyes -->
-        <circle cx="23" cy="44" r="3.5" fill="#4a3a2a"/>
-        <circle cx="37" cy="44" r="3.5" fill="#4a3a2a"/>
-        <circle cx="24" cy="43" r="1.2" fill="white"/>
-        <circle cx="38" cy="43" r="1.2" fill="white"/>
-        <!-- nose -->
+        <circle cx="23" cy="44" r="3.5" fill="#4a3a2a"/><circle cx="37" cy="44" r="3.5" fill="#4a3a2a"/>
+        <circle cx="24" cy="43" r="1.2" fill="white"/><circle cx="38" cy="43" r="1.2" fill="white"/>
         <ellipse cx="30" cy="50" rx="4" ry="2.5" fill="#6b5545"/>
-        <!-- whiskers -->
         <line x1="10" y1="48" x2="22" y2="50" stroke="#8b7b6b" stroke-width="0.8" opacity="0.5"/>
         <line x1="10" y1="52" x2="22" y2="52" stroke="#8b7b6b" stroke-width="0.8" opacity="0.5"/>
         <line x1="38" y1="50" x2="50" y2="48" stroke="#8b7b6b" stroke-width="0.8" opacity="0.5"/>
         <line x1="38" y1="52" x2="50" y2="52" stroke="#8b7b6b" stroke-width="0.8" opacity="0.5"/>
-        <!-- flippers -->
         <ellipse cx="22" cy="82" rx="10" ry="5" fill="#a89888" transform="rotate(-15 22 82)"/>
-        <!-- heart the seal is holding -->
-        <path d="M30 30 C30 30 24 25 24 21 C24 18.5 26 17 28 17 C29.5 17 30 18 30 18 C30 18 30.5 17 32 17 C34 17 36 18.5 36 21 C36 25 30 30 30 30Z" fill="#8b4a4a" opacity="0.7"/>
-        <defs><radialGradient id="sealGrad" cx="0.5" cy="0.3"><stop stop-color="white" stop-opacity="0.3"/><stop offset="1" stop-color="white" stop-opacity="0"/></radialGradient></defs>
+        <path d="M30 30C30 30 24 25 24 21C24 18.5 26 17 28 17C29.5 17 30 18 30 18C30 18 30.5 17 32 17C34 17 36 18.5 36 21C36 25 30 30 30 30Z" fill="#8b4a4a" opacity="0.7"/>
       </svg>`,
 
-      dachshund: (w) => `<svg width="${w}" height="${w * 0.55}" viewBox="0 0 150 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- body -->
+      dachshund: (w) => `<svg width="${w}" height="${w * 0.55}" viewBox="0 0 150 82" fill="none">
         <ellipse cx="75" cy="42" rx="48" ry="16" fill="#c9a87c"/>
         <ellipse cx="75" cy="38" rx="46" ry="14" fill="#d4b88c" opacity="0.5"/>
-        <!-- head -->
         <circle cx="118" cy="30" r="16" fill="#c9a87c"/>
-        <!-- snout -->
         <ellipse cx="132" cy="34" rx="10" ry="6" fill="#c9a87c"/>
         <ellipse cx="138" cy="33" rx="3" ry="2" fill="#6b5545"/>
-        <!-- ear -->
         <ellipse cx="110" cy="22" rx="8" ry="12" fill="#b8986c" transform="rotate(15 110 22)"/>
-        <!-- eye -->
-        <circle cx="122" cy="28" r="2.5" fill="#4a3a2a"/>
-        <circle cx="122.8" cy="27.3" r="0.8" fill="white"/>
-        <!-- legs -->
+        <circle cx="122" cy="28" r="2.5" fill="#4a3a2a"/><circle cx="122.8" cy="27.3" r="0.8" fill="white"/>
         <rect x="38" y="54" width="6" height="18" rx="3" fill="#b8986c"/>
         <rect x="50" y="54" width="6" height="18" rx="3" fill="#b8986c"/>
         <rect x="98" y="54" width="6" height="18" rx="3" fill="#b8986c"/>
         <rect x="110" y="54" width="6" height="18" rx="3" fill="#b8986c"/>
-        <!-- tail -->
-        <path d="M28 38 Q18 25 22 18" stroke="#c9a87c" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <!-- collar with heart -->
+        <path d="M28 38Q18 25 22 18" stroke="#c9a87c" stroke-width="5" stroke-linecap="round" fill="none"/>
         <rect x="112" y="40" width="18" height="5" rx="2" fill="#8b4a4a"/>
-        <path d="M121 42 C121 42 119 40 119 38.5 C119 37.5 120 37 121 37 C121.5 37 121.7 37.3 121.7 37.3 C121.7 37.3 122 37 122.5 37 C123.5 37 124.5 37.5 124.5 38.5 C124.5 40 121 42 121 42Z" fill="#faf6f0" opacity="0.8" transform="translate(0 3)"/>
-        <!-- belly -->
         <ellipse cx="75" cy="50" rx="40" ry="6" fill="#d4b88c" opacity="0.3"/>
       </svg>`,
 
-      cat: (w) => `<svg width="${w}" height="${w * 1.05}" viewBox="0 0 100 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- body -->
+      cat: (w) => `<svg width="${w}" height="${w * 1.05}" viewBox="0 0 100 105" fill="none">
         <ellipse cx="50" cy="72" rx="25" ry="28" fill="#d4a060"/>
         <ellipse cx="50" cy="68" rx="23" ry="24" fill="#ddb070" opacity="0.4"/>
-        <!-- tail with heart tip -->
-        <path d="M74 80 Q95 70 92 50 Q90 40 85 38" stroke="#d4a060" stroke-width="6" stroke-linecap="round" fill="none"/>
-        <path d="M85 38 C85 38 81 34 81 31 C81 29 82.5 28 84 28 C85 28 85.5 28.5 85.5 28.5 C85.5 28.5 86 28 87 28 C88.5 28 90 29 90 31 C90 34 85 38 85 38Z" fill="#8b4a4a" opacity="0.7"/>
-        <!-- head -->
+        <path d="M74 80Q95 70 92 50Q90 40 85 38" stroke="#d4a060" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M85 38C85 38 81 34 81 31C81 29 82.5 28 84 28C85 28 85.5 28.5 85.5 28.5C85.5 28.5 86 28 87 28C88.5 28 90 29 90 31C90 34 85 38 85 38Z" fill="#8b4a4a" opacity="0.7"/>
         <circle cx="50" cy="35" r="22" fill="#d4a060"/>
-        <!-- ear left -->
-        <polygon points="32,20 28,0 42,14" fill="#d4a060"/>
-        <polygon points="34,18 31,5 40,14" fill="#c48a50" opacity="0.5"/>
-        <!-- ear right -->
-        <polygon points="68,20 72,0 58,14" fill="#d4a060"/>
-        <polygon points="66,18 69,5 60,14" fill="#c48a50" opacity="0.5"/>
-        <!-- stripes (ginger markings) -->
-        <path d="M40 25 Q50 22 60 25" stroke="#c48a50" stroke-width="2" opacity="0.4" fill="none"/>
-        <path d="M42 20 Q50 18 58 20" stroke="#c48a50" stroke-width="1.5" opacity="0.3" fill="none"/>
-        <!-- eyes -->
-        <ellipse cx="42" cy="33" rx="3.5" ry="4" fill="#5a8a3a"/>
-        <ellipse cx="58" cy="33" rx="3.5" ry="4" fill="#5a8a3a"/>
-        <ellipse cx="42" cy="33" rx="1.5" ry="3" fill="#2a3a1a"/>
-        <ellipse cx="58" cy="33" rx="1.5" ry="3" fill="#2a3a1a"/>
-        <circle cx="41" cy="32" r="1" fill="white" opacity="0.7"/>
-        <circle cx="57" cy="32" r="1" fill="white" opacity="0.7"/>
-        <!-- nose -->
-        <path d="M48 39 L50 41 L52 39Z" fill="#d48a7a"/>
-        <!-- mouth -->
-        <path d="M50 41 Q48 44 46 43" stroke="#b0806a" stroke-width="0.8" fill="none" opacity="0.5"/>
-        <path d="M50 41 Q52 44 54 43" stroke="#b0806a" stroke-width="0.8" fill="none" opacity="0.5"/>
-        <!-- whiskers -->
+        <polygon points="32,20 28,0 42,14" fill="#d4a060"/><polygon points="34,18 31,5 40,14" fill="#c48a50" opacity="0.5"/>
+        <polygon points="68,20 72,0 58,14" fill="#d4a060"/><polygon points="66,18 69,5 60,14" fill="#c48a50" opacity="0.5"/>
+        <path d="M40 25Q50 22 60 25" stroke="#c48a50" stroke-width="2" opacity="0.4" fill="none"/>
+        <ellipse cx="42" cy="33" rx="3.5" ry="4" fill="#5a8a3a"/><ellipse cx="58" cy="33" rx="3.5" ry="4" fill="#5a8a3a"/>
+        <ellipse cx="42" cy="33" rx="1.5" ry="3" fill="#2a3a1a"/><ellipse cx="58" cy="33" rx="1.5" ry="3" fill="#2a3a1a"/>
+        <circle cx="41" cy="32" r="1" fill="white" opacity="0.7"/><circle cx="57" cy="32" r="1" fill="white" opacity="0.7"/>
+        <path d="M48 39L50 41L52 39Z" fill="#d48a7a"/>
+        <path d="M50 41Q48 44 46 43" stroke="#b0806a" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M50 41Q52 44 54 43" stroke="#b0806a" stroke-width="0.8" fill="none" opacity="0.5"/>
         <line x1="30" y1="37" x2="42" y2="39" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
         <line x1="30" y1="41" x2="42" y2="41" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
         <line x1="58" y1="39" x2="70" y2="37" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
         <line x1="58" y1="41" x2="70" y2="41" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
-        <!-- paws -->
-        <ellipse cx="38" cy="95" rx="7" ry="5" fill="#d4a060"/>
-        <ellipse cx="62" cy="95" rx="7" ry="5" fill="#d4a060"/>
+        <ellipse cx="38" cy="95" rx="7" ry="5" fill="#d4a060"/><ellipse cx="62" cy="95" rx="7" ry="5" fill="#d4a060"/>
       </svg>`,
 
-      camel: (w) => `<svg width="${w}" height="${w * 0.85}" viewBox="0 0 140 119" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- body -->
+      camel: (w) => `<svg width="${w}" height="${w * 0.85}" viewBox="0 0 140 119" fill="none">
         <ellipse cx="70" cy="65" rx="40" ry="22" fill="#d4b88c"/>
-        <!-- hump -->
         <ellipse cx="60" cy="46" rx="18" ry="14" fill="#d4b88c"/>
         <ellipse cx="60" cy="44" rx="16" ry="12" fill="#ddc49c" opacity="0.4"/>
-        <!-- heart on hump -->
-        <path d="M60 40 C60 40 54 35 54 31 C54 28.5 56 27 58 27 C59.5 27 60 28 60 28 C60 28 60.5 27 62 27 C64 27 66 28.5 66 31 C66 35 60 40 60 40Z" fill="#8b4a4a" opacity="0.6"/>
-        <!-- neck -->
-        <path d="M95 55 Q105 35 108 18" stroke="#d4b88c" stroke-width="14" stroke-linecap="round" fill="none"/>
-        <path d="M95 55 Q105 35 108 18" stroke="#ddc49c" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.3"/>
-        <!-- head -->
+        <path d="M60 40C60 40 54 35 54 31C54 28.5 56 27 58 27C59.5 27 60 28 60 28C60 28 60.5 27 62 27C64 27 66 28.5 66 31C66 35 60 40 60 40Z" fill="#8b4a4a" opacity="0.6"/>
+        <path d="M95 55Q105 35 108 18" stroke="#d4b88c" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M95 55Q105 35 108 18" stroke="#ddc49c" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.3"/>
         <ellipse cx="112" cy="14" rx="14" ry="10" fill="#d4b88c"/>
         <ellipse cx="118" cy="16" rx="8" ry="5" fill="#c9a87c"/>
-        <!-- ear -->
         <ellipse cx="104" cy="6" rx="3" ry="5" fill="#c9a87c"/>
-        <!-- eye -->
-        <circle cx="112" cy="11" r="2.5" fill="#4a3a2a"/>
-        <circle cx="112.7" cy="10.5" r="0.8" fill="white"/>
-        <!-- eyelashes -->
-        <path d="M110 9 Q109 7 108 6" stroke="#6b5545" stroke-width="0.8" fill="none"/>
-        <path d="M112 8 Q112 6 112 5" stroke="#6b5545" stroke-width="0.8" fill="none"/>
-        <!-- smile -->
-        <path d="M118 18 Q120 20 122 19" stroke="#b0906a" stroke-width="0.8" fill="none" opacity="0.6"/>
-        <!-- legs -->
+        <circle cx="112" cy="11" r="2.5" fill="#4a3a2a"/><circle cx="112.7" cy="10.5" r="0.8" fill="white"/>
+        <path d="M110 9Q109 7 108 6" stroke="#6b5545" stroke-width="0.8" fill="none"/>
+        <path d="M118 18Q120 20 122 19" stroke="#b0906a" stroke-width="0.8" fill="none" opacity="0.6"/>
         <rect x="42" y="82" width="7" height="28" rx="3.5" fill="#c9a87c"/>
         <rect x="55" y="82" width="7" height="28" rx="3.5" fill="#c9a87c"/>
         <rect x="78" y="82" width="7" height="28" rx="3.5" fill="#c9a87c"/>
         <rect x="90" y="82" width="7" height="28" rx="3.5" fill="#c9a87c"/>
-        <!-- hooves -->
         <rect x="41" y="107" width="9" height="4" rx="2" fill="#8b7b6b"/>
         <rect x="54" y="107" width="9" height="4" rx="2" fill="#8b7b6b"/>
         <rect x="77" y="107" width="9" height="4" rx="2" fill="#8b7b6b"/>
         <rect x="89" y="107" width="9" height="4" rx="2" fill="#8b7b6b"/>
-        <!-- tail -->
-        <path d="M32 60 Q22 55 20 48" stroke="#c9a87c" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M32 60Q22 55 20 48" stroke="#c9a87c" stroke-width="3" stroke-linecap="round" fill="none"/>
         <ellipse cx="19" cy="47" rx="3" ry="4" fill="#b8986c"/>
+      </svg>`,
+
+      saluki: (w) => `<svg width="${w}" height="${w * 0.8}" viewBox="0 0 140 112" fill="none">
+        <!-- Elegant saluki with long legs and flowing fur -->
+        <ellipse cx="70" cy="52" rx="35" ry="14" fill="#d4b88c"/>
+        <ellipse cx="70" cy="48" rx="33" ry="12" fill="#ddc49c" opacity="0.4"/>
+        <!-- Chest -->
+        <ellipse cx="95" cy="50" rx="12" ry="16" fill="#d4b88c"/>
+        <!-- Long elegant legs -->
+        <rect x="40" y="62" width="5" height="35" rx="2.5" fill="#c9a87c"/>
+        <rect x="52" y="62" width="5" height="35" rx="2.5" fill="#c9a87c"/>
+        <rect x="85" y="62" width="5" height="35" rx="2.5" fill="#c9a87c"/>
+        <rect x="96" y="62" width="5" height="35" rx="2.5" fill="#c9a87c"/>
+        <!-- Paws -->
+        <ellipse cx="42.5" cy="98" rx="4" ry="3" fill="#b8986c"/>
+        <ellipse cx="54.5" cy="98" rx="4" ry="3" fill="#b8986c"/>
+        <ellipse cx="87.5" cy="98" rx="4" ry="3" fill="#b8986c"/>
+        <ellipse cx="98.5" cy="98" rx="4" ry="3" fill="#b8986c"/>
+        <!-- Neck (long, elegant) -->
+        <path d="M100 45Q112 30 115 18" stroke="#d4b88c" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <!-- Head (narrow, refined) -->
+        <ellipse cx="118" cy="14" rx="10" ry="8" fill="#d4b88c"/>
+        <ellipse cx="126" cy="16" rx="7" ry="4" fill="#c9a87c"/>
+        <!-- Long floppy ear with flowing fur -->
+        <path d="M112 10Q105 18 103 30Q102 35 104 38" stroke="#b8986c" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M112 10Q108 20 107 32" stroke="#c9a87c" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <!-- Eye -->
+        <circle cx="120" cy="12" r="2" fill="#4a3a2a"/><circle cx="120.6" cy="11.5" r="0.7" fill="white"/>
+        <!-- Nose -->
+        <ellipse cx="131" cy="15" rx="2.5" ry="1.5" fill="#6b5545"/>
+        <!-- Feathered tail (flowing) -->
+        <path d="M36 48Q20 40 15 28Q12 22 14 18" stroke="#c9a87c" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M15 28Q10 24 8 18" stroke="#d4b88c" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M15 28Q12 20 13 14" stroke="#d4b88c" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"/>
+        <!-- Heart collar -->
+        <rect x="108" y="24" width="12" height="4" rx="2" fill="#8b4a4a"/>
+        <path d="M114 25C114 25 112.5 23.5 112.5 22.2C112.5 21.2 113.2 21 114 21C114.3 21 114.5 21.2 114.5 21.2C114.5 21.2 114.7 21 115 21C115.8 21 116.5 21.2 116.5 22.2C116.5 23.5 114 25 114 25Z" fill="#faf6f0" opacity="0.8"/>
+      </svg>`,
+
+      turtle: (w) => `<svg width="${w}" height="${w * 0.7}" viewBox="0 0 120 84" fill="none">
+        <!-- Shell -->
+        <ellipse cx="60" cy="42" rx="38" ry="28" fill="#8b9a6b"/>
+        <ellipse cx="60" cy="38" rx="35" ry="24" fill="#9aaa7b" opacity="0.5"/>
+        <!-- Shell pattern -->
+        <path d="M60 16L45 30L60 42L75 30Z" stroke="#7a8a5b" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path d="M45 30L35 45L50 55L60 42Z" stroke="#7a8a5b" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path d="M75 30L85 45L70 55L60 42Z" stroke="#7a8a5b" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path d="M60 42L50 55L60 66L70 55Z" stroke="#7a8a5b" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <!-- Head -->
+        <ellipse cx="100" cy="44" rx="12" ry="9" fill="#a8b07a"/>
+        <circle cx="104" cy="40" r="2" fill="#4a3a2a"/><circle cx="104.5" cy="39.5" r="0.7" fill="white"/>
+        <!-- Smile -->
+        <path d="M102 46Q105 48 108 46" stroke="#6b7a4b" stroke-width="0.8" fill="none" opacity="0.6"/>
+        <!-- Legs -->
+        <ellipse cx="35" cy="60" rx="10" ry="6" fill="#9aaa7b" transform="rotate(-20 35 60)"/>
+        <ellipse cx="85" cy="60" rx="10" ry="6" fill="#9aaa7b" transform="rotate(20 85 60)"/>
+        <ellipse cx="38" cy="30" rx="8" ry="5" fill="#9aaa7b" transform="rotate(-30 38 30)"/>
+        <ellipse cx="82" cy="30" rx="8" ry="5" fill="#9aaa7b" transform="rotate(30 82 30)"/>
+        <!-- Tail -->
+        <path d="M22 48Q16 46 14 42" stroke="#9aaa7b" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <!-- Heart on shell -->
+        <path d="M60 30C60 30 55 26 55 23C55 21 56.5 20 58 20C59 20 60 21 60 21C60 21 61 20 62 20C63.5 20 65 21 65 23C65 26 60 30 60 30Z" fill="#8b4a4a" opacity="0.6"/>
+      </svg>`,
+
+      binturong: (w) => `<svg width="${w}" height="${w * 0.85}" viewBox="0 0 120 102" fill="none">
+        <!-- Bearcat / binturong - dark fluffy body -->
+        <ellipse cx="60" cy="65" rx="32" ry="24" fill="#4a4040"/>
+        <ellipse cx="60" cy="62" rx="30" ry="21" fill="#5a5050" opacity="0.5"/>
+        <!-- Shaggy fur texture -->
+        <path d="M32 55Q28 50 30 45" stroke="#4a4040" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <path d="M88 55Q92 50 90 45" stroke="#4a4040" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <!-- Prehensile tail (curled) -->
+        <path d="M30 70Q15 65 12 55Q10 45 15 38Q20 32 25 35" stroke="#4a4040" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <!-- Legs -->
+        <rect x="42" y="82" width="8" height="14" rx="4" fill="#3a3030"/>
+        <rect x="56" y="82" width="8" height="14" rx="4" fill="#3a3030"/>
+        <rect x="70" y="82" width="8" height="14" rx="4" fill="#3a3030"/>
+        <!-- Head -->
+        <circle cx="85" cy="45" r="18" fill="#4a4040"/>
+        <!-- Ear tufts -->
+        <ellipse cx="74" cy="30" rx="5" ry="7" fill="#4a4040"/>
+        <ellipse cx="96" cy="30" rx="5" ry="7" fill="#4a4040"/>
+        <ellipse cx="74" cy="28" rx="3" ry="4" fill="#5a5050" opacity="0.4"/>
+        <ellipse cx="96" cy="28" rx="3" ry="4" fill="#5a5050" opacity="0.4"/>
+        <!-- White face markings -->
+        <path d="M80 42Q85 38 90 42" stroke="#b8a898" stroke-width="2" fill="none" opacity="0.4"/>
+        <!-- Eyes -->
+        <circle cx="80" cy="42" r="3" fill="#4a3a2a"/><circle cx="90" cy="42" r="3" fill="#4a3a2a"/>
+        <circle cx="80.8" cy="41.3" r="1" fill="white"/><circle cx="90.8" cy="41.3" r="1" fill="white"/>
+        <!-- Nose -->
+        <ellipse cx="85" cy="48" rx="3" ry="2" fill="#6b5545"/>
+        <!-- Whiskers -->
+        <line x1="72" y1="46" x2="80" y2="48" stroke="#7a6a5a" stroke-width="0.6" opacity="0.4"/>
+        <line x1="72" y1="50" x2="80" y2="50" stroke="#7a6a5a" stroke-width="0.6" opacity="0.4"/>
+        <line x1="90" y1="48" x2="98" y2="46" stroke="#7a6a5a" stroke-width="0.6" opacity="0.4"/>
+        <line x1="90" y1="50" x2="98" y2="50" stroke="#7a6a5a" stroke-width="0.6" opacity="0.4"/>
+        <!-- Heart -->
+        <path d="M85 35C85 35 81 32 81 29.5C81 28 82 27 83.5 27C84.5 27 85 28 85 28C85 28 85.5 27 86.5 27C88 27 89 28 89 29.5C89 32 85 35 85 35Z" fill="#8b4a4a" opacity="0.7"/>
+      </svg>`,
+
+      tiger: (w) => `<svg width="${w}" height="${w * 0.8}" viewBox="0 0 130 104" fill="none">
+        <!-- Body -->
+        <ellipse cx="60" cy="60" rx="38" ry="24" fill="#d4923c"/>
+        <ellipse cx="60" cy="57" rx="36" ry="21" fill="#dda050" opacity="0.4"/>
+        <!-- Tiger stripes on body -->
+        <path d="M45 42Q48 55 45 70" stroke="#8b5a1a" stroke-width="2.5" opacity="0.4" fill="none"/>
+        <path d="M55 40Q57 55 55 72" stroke="#8b5a1a" stroke-width="2.5" opacity="0.4" fill="none"/>
+        <path d="M65 40Q67 55 65 72" stroke="#8b5a1a" stroke-width="2.5" opacity="0.4" fill="none"/>
+        <path d="M75 42Q77 55 75 70" stroke="#8b5a1a" stroke-width="2.5" opacity="0.4" fill="none"/>
+        <!-- White belly -->
+        <ellipse cx="60" cy="68" rx="25" ry="8" fill="#f5e6c8" opacity="0.4"/>
+        <!-- Legs -->
+        <rect x="32" y="76" width="8" height="18" rx="4" fill="#c9882c"/>
+        <rect x="45" y="76" width="8" height="18" rx="4" fill="#c9882c"/>
+        <rect x="68" y="76" width="8" height="18" rx="4" fill="#c9882c"/>
+        <rect x="80" y="76" width="8" height="18" rx="4" fill="#c9882c"/>
+        <!-- Paws -->
+        <ellipse cx="36" cy="95" rx="6" ry="4" fill="#d4923c"/>
+        <ellipse cx="49" cy="95" rx="6" ry="4" fill="#d4923c"/>
+        <ellipse cx="72" cy="95" rx="6" ry="4" fill="#d4923c"/>
+        <ellipse cx="84" cy="95" rx="6" ry="4" fill="#d4923c"/>
+        <!-- Tail -->
+        <path d="M96 55Q110 48 115 38Q118 32 116 26" stroke="#d4923c" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M115 38Q118 35 116 28" stroke="#8b5a1a" stroke-width="2" opacity="0.4" fill="none"/>
+        <!-- Head -->
+        <circle cx="20" cy="42" r="20" fill="#d4923c"/>
+        <!-- White face patches -->
+        <ellipse cx="20" cy="48" rx="12" ry="8" fill="#f5e6c8" opacity="0.5"/>
+        <!-- Ears -->
+        <circle cx="6" cy="26" r="7" fill="#d4923c"/><circle cx="34" cy="26" r="7" fill="#d4923c"/>
+        <circle cx="6" cy="26" r="4" fill="#c9882c" opacity="0.6"/><circle cx="34" cy="26" r="4" fill="#c9882c" opacity="0.6"/>
+        <!-- Tiger stripes on face -->
+        <path d="M10 32Q15 35 12 38" stroke="#8b5a1a" stroke-width="1.5" opacity="0.5" fill="none"/>
+        <path d="M30 32Q25 35 28 38" stroke="#8b5a1a" stroke-width="1.5" opacity="0.5" fill="none"/>
+        <path d="M20 28Q20 32 20 34" stroke="#8b5a1a" stroke-width="1.5" opacity="0.5" fill="none"/>
+        <!-- Eyes -->
+        <ellipse cx="14" cy="40" rx="3" ry="3.5" fill="#c4a020"/>
+        <ellipse cx="26" cy="40" rx="3" ry="3.5" fill="#c4a020"/>
+        <ellipse cx="14" cy="40" rx="1.5" ry="2.5" fill="#2a2a1a"/>
+        <ellipse cx="26" cy="40" rx="1.5" ry="2.5" fill="#2a2a1a"/>
+        <circle cx="13.5" cy="39" r="0.8" fill="white" opacity="0.7"/>
+        <circle cx="25.5" cy="39" r="0.8" fill="white" opacity="0.7"/>
+        <!-- Nose -->
+        <path d="M18 46L20 48L22 46Z" fill="#d48a7a"/>
+        <!-- Mouth / smile -->
+        <path d="M20 48Q18 51 16 50" stroke="#b0806a" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M20 48Q22 51 24 50" stroke="#b0806a" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <!-- Whiskers -->
+        <line x1="2" y1="44" x2="12" y2="46" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
+        <line x1="2" y1="48" x2="12" y2="48" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
+        <line x1="28" y1="46" x2="38" y2="44" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
+        <line x1="28" y1="48" x2="38" y2="48" stroke="#b8986c" stroke-width="0.7" opacity="0.4"/>
+        <!-- Heart -->
+        <path d="M20 30C20 30 16 27 16 24.5C16 23 17 22 18.5 22C19.5 22 20 23 20 23C20 23 20.5 22 21.5 22C23 22 24 23 24 24.5C24 27 20 30 20 30Z" fill="#8b4a4a" opacity="0.7"/>
       </svg>`
     };
 
-    // Animal placement positions
+    // Angry cat SVG
+    const angryCatSVG = `<svg width="180" height="190" viewBox="0 0 100 105" fill="none">
+      <ellipse cx="50" cy="72" rx="25" ry="28" fill="#d4a060"/>
+      <ellipse cx="50" cy="68" rx="23" ry="24" fill="#ddb070" opacity="0.4"/>
+      <!-- Puffed up tail -->
+      <path d="M74 75Q100 60 95 40Q92 30 88 28" stroke="#d4a060" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <path d="M92 35Q95 30 90 26" stroke="#c48a50" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+      <path d="M88 38Q92 34 87 30" stroke="#c48a50" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"/>
+      <circle cx="50" cy="35" r="22" fill="#d4a060"/>
+      <!-- Angry ears (flattened) -->
+      <polygon points="30,24 22,8 42,20" fill="#d4a060"/>
+      <polygon points="32,22 26,12 40,20" fill="#c48a50" opacity="0.5"/>
+      <polygon points="70,24 78,8 58,20" fill="#d4a060"/>
+      <polygon points="68,22 74,12 60,20" fill="#c48a50" opacity="0.5"/>
+      <!-- Angry eyebrows -->
+      <path d="M34 26L44 30" stroke="#8b5a1a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M66 26L56 30" stroke="#8b5a1a" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Angry eyes (narrow) -->
+      <ellipse cx="42" cy="34" rx="4" ry="2.5" fill="#5a8a3a"/>
+      <ellipse cx="58" cy="34" rx="4" ry="2.5" fill="#5a8a3a"/>
+      <ellipse cx="42" cy="34" rx="2" ry="2" fill="#2a3a1a"/>
+      <ellipse cx="58" cy="34" rx="2" ry="2" fill="#2a3a1a"/>
+      <circle cx="41" cy="33.5" r="0.7" fill="white" opacity="0.7"/>
+      <circle cx="57" cy="33.5" r="0.7" fill="white" opacity="0.7"/>
+      <!-- Nose -->
+      <path d="M48 39L50 41L52 39Z" fill="#d48a7a"/>
+      <!-- Angry mouth (hissing) -->
+      <path d="M44 44Q50 48 56 44" stroke="#b0806a" stroke-width="1.2" fill="none"/>
+      <path d="M46 44L47 46" stroke="#f0f0e0" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M54 44L53 46" stroke="#f0f0e0" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- Bristled whiskers -->
+      <line x1="26" y1="35" x2="38" y2="39" stroke="#b8986c" stroke-width="0.8" opacity="0.6"/>
+      <line x1="28" y1="42" x2="38" y2="42" stroke="#b8986c" stroke-width="0.8" opacity="0.6"/>
+      <line x1="62" y1="39" x2="74" y2="35" stroke="#b8986c" stroke-width="0.8" opacity="0.6"/>
+      <line x1="62" y1="42" x2="72" y2="42" stroke="#b8986c" stroke-width="0.8" opacity="0.6"/>
+      <ellipse cx="38" cy="95" rx="7" ry="5" fill="#d4a060"/>
+      <ellipse cx="62" cy="95" rx="7" ry="5" fill="#d4a060"/>
+    </svg>`;
+
+    const angryCatMessages = [
+      "Wrong answer! Try again...",
+      "The cat is NOT impressed.",
+      "Seriously? The cat says no.",
+      "That's not the right answer and you know it.",
+      "The cat has spoken. Reconsider.",
+      "Hiss! That option doesn't exist.",
+      "Are you sure about that? The cat isn't.",
+      "The cat demands a recount.",
+    ];
+
+    // =====================
+    // Animal placements (many more!)
+    // =====================
     const animalPlacements = [
-      { type: 'seal', x: '2%', y: '12%', size: 90, delay: 0.2 },
-      { type: 'cat', x: '82%', y: '8%', size: 70, delay: 0.5 },
-      { type: 'dachshund', x: '1%', y: '75%', size: 110, delay: 0.8 },
-      { type: 'camel', x: '78%', y: '70%', size: 95, delay: 1.1 },
+      { type: 'seal', x: '1%', y: '8%', size: 80, delay: 0.2 },
+      { type: 'tiger', x: '80%', y: '4%', size: 75, delay: 0.4 },
+      { type: 'dachshund', x: '0%', y: '40%', size: 100, delay: 0.6 },
+      { type: 'cat', x: '84%', y: '35%', size: 65, delay: 0.8 },
+      { type: 'camel', x: '78%', y: '65%', size: 85, delay: 1.0 },
+      { type: 'turtle', x: '2%', y: '70%', size: 75, delay: 1.2 },
+      { type: 'saluki', x: '82%', y: '88%', size: 90, delay: 1.4 },
+      { type: 'binturong', x: '1%', y: '88%', size: 70, delay: 1.6 },
+      { type: 'seal', x: '85%', y: '50%', size: 60, delay: 1.0 },
+      { type: 'tiger', x: '3%', y: '55%', size: 55, delay: 1.3 },
+      { type: 'cat', x: '40%', y: '92%', size: 55, delay: 1.8 },
+      { type: 'dachshund', x: '55%', y: '2%', size: 70, delay: 0.9 },
     ];
 
     function placeAnimals() {
@@ -863,14 +996,10 @@
     function openEnvelope() {
       if (envelopeOpened) return;
       envelopeOpened = true;
-
-      const envelope = document.getElementById('envelope');
-      envelope.classList.add('opening');
-
+      document.getElementById('envelope').classList.add('opening');
       setTimeout(() => {
         document.getElementById('envelope-scene').classList.add('hidden');
       }, 1400);
-
       setTimeout(() => {
         document.getElementById('envelope-scene').style.display = 'none';
         document.getElementById('valentine-scene').classList.add('active');
@@ -889,14 +1018,12 @@
       return new Promise((resolve) => {
         const found = [];
         let index = 1;
-
         function probeNext() {
           const jpgPath = 'photos/photo' + index + '.jpg';
           const jpegPath = 'photos/photo' + index + '.jpeg';
           const imgJpg = new Image();
           const imgJpeg = new Image();
           let settled = false;
-
           function onFound(path) {
             if (settled) return;
             settled = true;
@@ -904,20 +1031,15 @@
             index++;
             probeNext();
           }
-
           function onBothFailed() { resolve(found); }
-
           let jpgDone = false, jpegDone = false;
-
           imgJpg.onload = () => onFound(jpgPath);
           imgJpg.onerror = () => { jpgDone = true; if (jpegDone) onBothFailed(); };
           imgJpeg.onload = () => onFound(jpegPath);
           imgJpeg.onerror = () => { jpegDone = true; if (jpgDone) onBothFailed(); };
-
           imgJpg.src = jpgPath;
           imgJpeg.src = jpegPath;
         }
-
         probeNext();
       });
     }
@@ -933,7 +1055,7 @@
     }
 
     // =====================
-    // Floating Hearts (SVG)
+    // Floating Hearts
     // =====================
     function createFloatingHearts() {
       const container = document.getElementById('floating-hearts');
@@ -952,12 +1074,29 @@
     }
 
     // =====================
-    // No Button Avoidance
+    // No Button — Angry Cat + Avoidance
     // =====================
     const btnNo = document.getElementById('btn-no');
     const buttonsArea = document.getElementById('buttons-area');
+    let noHoverCount = 0;
+
+    function showAngryCat() {
+      const overlay = document.getElementById('angry-cat-overlay');
+      document.getElementById('angry-cat-svg').innerHTML = angryCatSVG;
+      document.getElementById('angry-cat-text').textContent =
+        angryCatMessages[Math.floor(Math.random() * angryCatMessages.length)];
+      overlay.classList.add('active');
+    }
+
+    function dismissAngryCat() {
+      document.getElementById('angry-cat-overlay').classList.remove('active');
+    }
 
     btnNo.addEventListener('mouseenter', function () {
+      noHoverCount++;
+      // Show angry cat every time
+      showAngryCat();
+      // Also move the button
       const maxX = window.innerWidth - 100;
       const maxY = window.innerHeight - 50;
       btnNo.style.position = 'fixed';
@@ -969,15 +1108,13 @@
       btnNo.style.padding = '8px 20px';
     });
 
-    btnNo.addEventListener('touchstart', function (e) {
-      e.preventDefault();
-      btnNo.style.position = 'fixed';
-      btnNo.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-      btnNo.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+    btnNo.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showAngryCat();
     });
 
     // =====================
-    // Yes Button Follows Mouse
+    // Yes Button — Desktop: follows mouse, Mobile: appears at tap
     // =====================
     const btnYes = document.getElementById('btn-yes');
     let mouseX = window.innerWidth / 2;
@@ -990,12 +1127,11 @@
     });
 
     function animateYesButton() {
-      if (!yesFollowing) return;
+      if (!yesFollowing || isMobile) return;
       const rect = btnYes.getBoundingClientRect();
       const dx = mouseX - (rect.left + rect.width / 2);
       const dy = mouseY - (rect.top + rect.height / 2);
       const dist = Math.sqrt(dx * dx + dy * dy);
-
       if (dist < 300 && dist > 5) {
         const currentLeft = parseFloat(btnYes.style.left) || 0;
         const currentTop = parseFloat(btnYes.style.top) || 0;
@@ -1005,7 +1141,35 @@
       }
       requestAnimationFrame(animateYesButton);
     }
-    animateYesButton();
+
+    if (!isMobile) {
+      animateYesButton();
+    }
+
+    // Mobile: tap anywhere on question screen to move button there and trigger yes
+    if (isMobile) {
+      document.addEventListener('touchstart', function(e) {
+        // Only on question screen
+        const qScreen = document.getElementById('question-screen');
+        if (qScreen.style.display === 'none') return;
+        if (!document.getElementById('valentine-scene').classList.contains('active')) return;
+        if (document.getElementById('angry-cat-overlay').classList.contains('active')) return;
+
+        const touch = e.touches[0];
+        const tx = touch.clientX;
+        const ty = touch.clientY;
+
+        // Move button to tap position
+        const btnRect = btnYes.getBoundingClientRect();
+        btnYes.style.position = 'fixed';
+        btnYes.style.left = (tx - btnRect.width / 2) + 'px';
+        btnYes.style.top = (ty - btnRect.height / 2) + 'px';
+        btnYes.style.zIndex = '9999';
+
+        // Brief delay then trigger yes
+        setTimeout(() => sayYes(), 200);
+      });
+    }
 
     // =====================
     // Confetti
@@ -1051,9 +1215,7 @@
       confettiPieces.forEach(p => {
         if (p.opacity <= 0) return;
         active++;
-        p.y += p.speed;
-        p.x += p.drift;
-        p.angle += p.spin;
+        p.y += p.speed; p.x += p.drift; p.angle += p.spin;
         if (p.y > canvas.height + 20) p.opacity -= 0.02;
         ctx.save();
         ctx.translate(p.x, p.y);
@@ -1074,7 +1236,6 @@
       yesFollowing = false;
       document.getElementById('question-screen').style.display = 'none';
       document.getElementById('celebration-screen').classList.add('active');
-
       const photo = getRandomPhoto();
       if (photo) {
         document.getElementById('valentine-photo').src = photo;
@@ -1082,7 +1243,6 @@
       } else {
         document.getElementById('photo-container').style.display = 'none';
       }
-
       createConfetti();
       setTimeout(createConfetti, 1200);
       setTimeout(createConfetti, 2800);
@@ -1094,15 +1254,18 @@
     function goBack() {
       document.getElementById('celebration-screen').classList.remove('active');
       document.getElementById('question-screen').style.display = '';
+      btnYes.style.position = 'relative';
       btnYes.style.left = '0px';
       btnYes.style.top = '0px';
+      btnYes.style.zIndex = '20';
       yesFollowing = true;
-      animateYesButton();
+      if (!isMobile) animateYesButton();
       btnNo.style.position = 'absolute';
       btnNo.style.left = '';
       btnNo.style.top = '';
       btnNo.style.fontSize = '';
       btnNo.style.padding = '';
+      noHoverCount = 0;
       confettiRunning = false;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
