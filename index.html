@@ -1015,33 +1015,10 @@
     let photosReady = false;
 
     function discoverPhotos() {
-      return new Promise((resolve) => {
-        const found = [];
-        let index = 1;
-        function probeNext() {
-          const jpgPath = 'photos/photo' + index + '.jpg';
-          const jpegPath = 'photos/photo' + index + '.jpeg';
-          const imgJpg = new Image();
-          const imgJpeg = new Image();
-          let settled = false;
-          function onFound(path) {
-            if (settled) return;
-            settled = true;
-            found.push(path);
-            index++;
-            probeNext();
-          }
-          function onBothFailed() { resolve(found); }
-          let jpgDone = false, jpegDone = false;
-          imgJpg.onload = () => onFound(jpgPath);
-          imgJpg.onerror = () => { jpgDone = true; if (jpegDone) onBothFailed(); };
-          imgJpeg.onload = () => onFound(jpegPath);
-          imgJpeg.onerror = () => { jpegDone = true; if (jpgDone) onBothFailed(); };
-          imgJpg.src = jpgPath;
-          imgJpeg.src = jpegPath;
-        }
-        probeNext();
-      });
+      return fetch('photos/photos.json')
+        .then(r => r.json())
+        .then(filenames => filenames.map(f => 'photos/' + f))
+        .catch(() => []);
     }
 
     function getRandomPhoto() {
